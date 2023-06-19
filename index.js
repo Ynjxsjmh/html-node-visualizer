@@ -71,7 +71,10 @@ while (dequeue.length > 0) {
     nodeGraphviz.set("label", (nodeLabel.replace(/\{nodeName\}/g, node["nodeName"])
                                .replace(/\{nodeType\}/g, node["nodeType"])
                                .replace(/\{nodeValue\}/g, node["nodeValue"] ? node["nodeValue"].replaceAll('"', "'") : node["nodeValue"])
-                               .replace(/\{data\}/g, node["data"] ? node["data"].replaceAll('"', "'").replace(/\n/gm, "⮒").replace(" ", "·") : node["data"])
+                               .replace(/\{data\}/g,
+                                        node["data"]
+                                        ? node["data"].replaceAll('"', "'").replace(/\n/gm, "⮒").replace(/ /g, "·")
+                                        : node["data"])
                                .replace(/\{nodeID\}/g, node["nodeID"])
                                .replace(/\{parentID\}/g, node["parentNode"] ? node["parentNode"]["nodeID"] : "?")
                               ));
