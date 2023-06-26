@@ -15,11 +15,11 @@ const createDoc = function (html) {
   });
 
   if (!isBrowser) {
-    const dom = new jsdom.JSDOM(html);
+    const dom = new jsdom.JSDOM(minifiedHtml);
     return dom.window.document.body;
   } else{
     var container = document.createElement("html");
-    container.innerHTML = html;
+    container.innerHTML = minifiedHtml;
     return container;
   }
 };
